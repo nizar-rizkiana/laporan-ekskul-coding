@@ -232,7 +232,7 @@ function renderIndividualReport() {
       ${indicatorsHTML}
 
       <!-- Section D: Foto Dokumentasi & Projek (Layout 2 Kolom) -->
-      <h4 style="margin:0 0 0.8rem 0; font-size:1rem; border-bottom:1px solid #ddd; padding-bottom:3px;">D. DOKUMENTASI KEGIATAN & HASIL PROJEK</h4>
+      <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">D. DOKUMENTASI KEGIATAN & HASIL PROJEK</h4>
       <div style="display:flex; justify-content:space-between; gap:1rem; margin-bottom:1.5rem; page-break-inside:avoid;">
         
         <!-- Box Foto Dokumentasi -->
@@ -254,7 +254,7 @@ function renderIndividualReport() {
         </div>
       </div>
 
-      <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">D. PENILAIAN INDIVIDUAL</h4>
+      <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">E. PENILAIAN INDIVIDUAL</h4>
       <table style="margin-bottom:1.5rem;">
         <thead>
           <tr>
@@ -271,7 +271,7 @@ function renderIndividualReport() {
         </tbody>
       </table>
 
-      <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">E. DESKRIPSI PERKEMBANGAN</h4>
+      <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">F. DESKRIPSI PERKEMBANGAN</h4>
       <div style="border: 1px solid #cbd5e1; padding: 0.85rem; border-radius: 6px; font-size:0.85rem; line-height:1.5; background:#f8fafc;">
         ${assess.desc || 'Belum ada deskripsi catatan perkembangan dari guru.'}
       </div>
