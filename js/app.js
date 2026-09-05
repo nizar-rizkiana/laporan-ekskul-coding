@@ -231,6 +231,29 @@ function renderIndividualReport() {
 
       ${indicatorsHTML}
 
+      <!-- Section D: Foto Dokumentasi & Projek (Layout 2 Kolom) -->
+      <h4 style="margin:0 0 0.8rem 0; font-size:1rem; border-bottom:1px solid #ddd; padding-bottom:3px;">D. DOKUMENTASI KEGIATAN & HASIL PROJEK</h4>
+      <div style="display:flex; justify-content:space-between; gap:1rem; margin-bottom:1.5rem; page-break-inside:avoid;">
+        
+        <!-- Box Foto Dokumentasi -->
+        <div style="flex:1; text-align:center; border:1px solid #e5e7eb; padding:0.8rem; border-radius:6px; background:#fafafa;">
+          <p style="font-size:0.85rem; font-weight:bold; margin:0 0 0.5rem 0; color:#374151;">Foto Dokumentasi Pertemuan</p>
+          ${meeting.docImage ? 
+            `<img src="${meeting.docImage}" style="max-width:100%; height:160px; object-fit:cover; border-radius:4px; border:1px solid #ccc;">` : 
+            '<div style="height:160px; border:1px dashed #ccc; display:flex; align-items:center; justify-content:center; color:#9ca3af; font-size:0.8rem; background:#fff;">Tidak Ada Foto Dokumentasi</div>'
+          }
+        </div>
+
+        <!-- Box Foto Hasil Projek -->
+        <div style="flex:1; text-align:center; border:1px solid #e5e7eb; padding:0.8rem; border-radius:6px; background:#fafafa;">
+          <p style="font-size:0.85rem; font-weight:bold; margin:0 0 0.5rem 0; color:#374151;">Foto Hasil Projek Siswa</p>
+          ${assess.projectImage ? 
+            `<img src="${assess.projectImage}" style="max-width:100%; height:160px; object-fit:cover; border-radius:4px; border:1px solid #ccc;">` : 
+            '<div style="height:160px; border:1px dashed #ccc; display:flex; align-items:center; justify-content:center; color:#9ca3af; font-size:0.8rem; background:#fff;">Tidak Ada Foto Hasil Projek</div>'
+          }
+        </div>
+      </div>
+
       <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">D. PENILAIAN INDIVIDUAL</h4>
       <table style="margin-bottom:1.5rem;">
         <thead>
