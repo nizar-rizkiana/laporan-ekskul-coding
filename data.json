@@ -2,9 +2,73 @@
   "students": [
     {
       "id": "ID_1788537538657_dvr1",
-      "nis": "123",
-      "name": "nizar",
+      "nis": "001",
+      "name": "Syaqila",
       "class": "7a",
+      "gender": "P",
+      "status": "Aktif"
+    },
+    {
+      "id": "ID_1788583323239_3cvi",
+      "nis": "002",
+      "name": "Alisha",
+      "class": "7",
+      "gender": "P",
+      "status": "Aktif"
+    },
+    {
+      "id": "ID_1788583339319_y3mn",
+      "nis": "003",
+      "name": "Aleni Kilua",
+      "class": "7",
+      "gender": "P",
+      "status": "Aktif"
+    },
+    {
+      "id": "ID_1788583355372_j7di",
+      "nis": "004",
+      "name": "Zhafira",
+      "class": "7",
+      "gender": "P",
+      "status": "Aktif"
+    },
+    {
+      "id": "ID_1788583462868_pdxt",
+      "nis": "005",
+      "name": "Alea",
+      "class": "7",
+      "gender": "P",
+      "status": "Aktif"
+    },
+    {
+      "id": "ID_1788583476335_70ui",
+      "nis": "006",
+      "name": "Kurnia",
+      "class": "7",
+      "gender": "P",
+      "status": "Aktif"
+    },
+    {
+      "id": "ID_1788583488648_ny9g",
+      "nis": "007",
+      "name": "Jihan",
+      "class": "8",
+      "gender": "P",
+      "status": "Aktif"
+    },
+    {
+      "id": "ID_1788583505500_s45p",
+      "nis": "008",
+      "name": "Velini",
+      "class": "8",
+      "gender": "P",
+      "status": "Aktif"
+    },
+    {
+      "id": "ID_1788583534781_lbjz",
+      "nis": "009",
+      "name": "Ahmadinezad Reza Firdaus",
+      "class": "7A",
       "gender": "L",
       "status": "Aktif"
     }
@@ -14,9 +78,14 @@
       "id": "ID_1788537568683_vkpw",
       "number": 1,
       "date": "2026-04-08",
-      "topic": "koding",
-      "goals": "koding",
-      "achievements": "koding is fun"
+      "topic": "Belajar Coding dengan PictoBlox : Pengenalan PictoBlox",
+      "goals": "1. Murid mampu berpikir logis & sistematis <br>\n2. Murid mampu memahami dasar pemrograman <br>\n3. Murid mampu memecahkan masalah dengan langkah yang tepat",
+      "achievements": "Murid mampu memahami konsep dasar coding dan algoritma, menerapkan instruksi sederhana secara berurutan dengan pemrograman visual PictoBlox",
+      "indicators": [
+        "Murid mampu memberikan minimal 2 contoh teknologi yang menggunakan coding",
+        "Murid mampu menunjukkan stage, sprite, block, coding area, green flag dan stop",
+        "Murid mampu menyusun langkah-langkah suatu aktivitas secara logis"
+      ]
     }
   ],
   "attendance": [
@@ -32,6 +101,11 @@
       "id": "ID_1788537568683_vkpw_ID_1788537538657_dvr1",
       "meetingId": "ID_1788537568683_vkpw",
       "studentId": "ID_1788537538657_dvr1",
+      "indicatorStatuses": {
+        "0": "Tercapai",
+        "1": "Tercapai",
+        "2": "Tercapai"
+      },
       "concept": 90,
       "skill": 80,
       "creativity": 70,

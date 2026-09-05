@@ -26,10 +26,10 @@
       </div>
     </header>
 
-    <!-- Content Area -->
+    <!-- Main Content -->
     <main class="main-content">
       
-      <!-- Welcome / Search Section -->
+      <!-- Search Section -->
       <section id="search-section" class="card search-card no-print">
         <div class="icon-pulse">🔍</div>
         <h3>Cari Data Siswa</h3>
@@ -40,10 +40,9 @@
         </div>
       </section>
 
-      <!-- Selected Student Profile & Navigation -->
+      <!-- Student Dashboard -->
       <section id="student-dashboard" style="display: none;">
         
-        <!-- Profile Card -->
         <div class="card student-info-card no-print">
           <div class="profile-header">
             <div class="profile-info">
@@ -57,7 +56,6 @@
             <button class="btn btn-secondary btn-sm" onclick="resetStudentSelection()">Ganti Siswa</button>
           </div>
           
-          <!-- Tab Navigation -->
           <div class="tab-menu">
             <button class="tab-btn active" onclick="switchTab('attendance')">Presensi</button>
             <button class="tab-btn" onclick="switchTab('reports')">Laporan Pertemuan</button>
@@ -65,7 +63,7 @@
           </div>
         </div>
 
-        <!-- Tab Contents -->
+        <!-- Attendance Tab -->
         <div id="tab-attendance" class="tab-content active">
           <div class="card">
             <h3 class="card-title">Rekapitulasi Kehadiran</h3>
@@ -99,26 +97,24 @@
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody id="attendance-table-body">
-                  <!-- Dynamic content -->
-                </tbody>
+                <tbody id="attendance-table-body"></tbody>
               </table>
             </div>
           </div>
         </div>
 
+        <!-- Individual Report Tab -->
         <div id="tab-reports" class="tab-content">
           <div class="card no-print" style="margin-bottom: 1rem;">
             <div class="form-group">
               <label style="margin-bottom:0.5rem; display:block; color:var(--text-muted); font-size:0.85rem;">Pilih Pertemuan Pembelajaran:</label>
-              <select id="select-meeting-report" class="form-control" onchange="renderIndividualReport()">
-                <!-- Dynamic Meeting Options -->
-              </select>
+              <select id="select-meeting-report" class="form-control" onchange="renderIndividualReport()"></select>
             </div>
           </div>
           <div id="individual-report-container"></div>
         </div>
 
+        <!-- Semester Report Tab -->
         <div id="tab-semester" class="tab-content">
           <div id="semester-report-container"></div>
         </div>

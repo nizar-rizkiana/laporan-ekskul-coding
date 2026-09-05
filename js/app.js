@@ -11,12 +11,11 @@ let appData = {
 
 let currentStudent = null;
 
-// Ambil data.json secara otomatis saat aplikasi dibuka
+// Load JSON saat halaman dibuka
 document.addEventListener('DOMContentLoaded', () => {
   loadDataFromJSON();
 });
 
-// Fetch data dari file data.json di server hosting
 async function loadDataFromJSON() {
   const badge = document.getElementById('data-status-badge');
   try {
@@ -44,7 +43,6 @@ async function loadDataFromJSON() {
   }
 }
 
-// Search Student Handler
 function searchStudent() {
   const query = document.getElementById('student-search-input').value.toLowerCase().trim();
   const resultsContainer = document.getElementById('search-results');
@@ -70,7 +68,6 @@ function searchStudent() {
   resultsContainer.style.display = 'block';
 }
 
-// Select Student & Load Profile Data
 function selectStudent(studentId) {
   currentStudent = appData.students.find(s => s.id === studentId);
   if (!currentStudent) return;
@@ -95,7 +92,6 @@ function resetStudentSelection() {
   document.getElementById('search-section').style.display = 'block';
 }
 
-// Tab Switching System
 function switchTab(tabName) {
   document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
@@ -141,7 +137,6 @@ function loadAttendanceData() {
   }).join('');
 }
 
-// 2. LAPORAN INDIVIDUAL
 function populateMeetingDropdown() {
   const select = document.getElementById('select-meeting-report');
   const meetings = [...appData.meetings].sort((a,b) => a.number - b.number);
@@ -151,6 +146,7 @@ function populateMeetingDropdown() {
   ).join('');
 }
 
+// LAPORAN INDIVIDUAL (MENYESUAIKAN FORMAT JSON BARU)
 function renderIndividualReport() {
   const meetingId = document.getElementById('select-meeting-report').value;
   const container = document.getElementById('individual-report-container');
@@ -162,6 +158,47 @@ function renderIndividualReport() {
 
   const meeting = appData.meetings.find(m => m.id === meetingId);
   const assess = appData.assessments.find(a => a.meetingId === meetingId && a.studentId === currentStudent.id) || {};
+  const indicatorStatuses = assess.indicatorStatuses || {};
+
+  // Render Indikator Capaian Pembelajaran (Array String & Index Key)
+  let indicatorsHTML = '';
+  if (meeting.indicators && meeting.indicators.length > 0) {
+    indicatorsHTML = `
+      <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">C. INDIKATOR CAPAIAN PEMBELAJARAN</h4>
+      <table style="margin-bottom:1.5rem; width:100%;">
+        <thead>
+          <tr>
+            <th style="width:70%;">Indikator Capaian</th>
+            <th style="width:30%; text-align:center;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${meeting.indicators.map((indicatorText, index) => {
+            // Ambil status berdasarkan index angka dalam bentuk string ("0", "1", "2")
+            const status = indicatorStatuses[index.toString()] || 'Belum Dinilai';
+            const isSuccess = status === 'Tercapai';
+            const bgStyle = isSuccess ? 'background:#dcfce7; color:#15803d;' : 'background:#ffe4e6; color:#be123c;';
+            
+            return `
+              <tr>
+                <td>${indicatorText}</td>
+                <td style="text-align:center;">
+                  <span style="padding:0.2rem 0.6rem; border-radius:4px; font-weight:bold; font-size:0.75rem; ${bgStyle}">
+                    ${status}
+                  </span>
+                </td>
+              </tr>
+            `;
+          }).join('')}
+        </tbody>
+      </table>
+    `;
+  } else {
+    indicatorsHTML = `
+      <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">C. INDIKATOR CAPAIAN PEMBELAJARAN</h4>
+      <p style="margin-bottom: 1.5rem; font-size:0.85rem; color:#64748b;">Belum ada indikator capaian yang ditambahkan pada pertemuan ini.</p>
+    `;
+  }
 
   container.innerHTML = `
     <div class="action-buttons-group no-print">
@@ -192,7 +229,9 @@ function renderIndividualReport() {
       <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">B. CAPAIAN PEMBELAJARAN</h4>
       <p style="margin-bottom: 1rem; font-size:0.85rem; line-height:1.5;">${meeting.achievements || '-'}</p>
 
-      <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">C. PENILAIAN INDIVIDUAL</h4>
+      ${indicatorsHTML}
+
+      <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">D. PENILAIAN INDIVIDUAL</h4>
       <table style="margin-bottom:1.5rem;">
         <thead>
           <tr>
@@ -209,7 +248,7 @@ function renderIndividualReport() {
         </tbody>
       </table>
 
-      <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">D. DESKRIPSI PERKEMBANGAN</h4>
+      <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:0.4rem;">E. DESKRIPSI PERKEMBANGAN</h4>
       <div style="border: 1px solid #cbd5e1; padding: 0.85rem; border-radius: 6px; font-size:0.85rem; line-height:1.5; background:#f8fafc;">
         ${assess.desc || 'Belum ada deskripsi catatan perkembangan dari guru.'}
       </div>
@@ -291,7 +330,6 @@ function renderSemesterReport() {
   `;
 }
 
-// PDF Exporter Function
 function exportPDF(elementId, fileName) {
   const element = document.getElementById(elementId);
   const opt = {
