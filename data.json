@@ -1,0 +1,44 @@
+{
+  "students": [
+    {
+      "id": "ID_1788537538657_dvr1",
+      "nis": "123",
+      "name": "nizar",
+      "class": "7a",
+      "gender": "L",
+      "status": "Aktif"
+    }
+  ],
+  "meetings": [
+    {
+      "id": "ID_1788537568683_vkpw",
+      "number": 1,
+      "date": "2026-04-08",
+      "topic": "koding",
+      "goals": "koding",
+      "achievements": "koding is fun"
+    }
+  ],
+  "attendance": [
+    {
+      "id": "ID_1788537568683_vkpw_ID_1788537538657_dvr1",
+      "meetingId": "ID_1788537568683_vkpw",
+      "studentId": "ID_1788537538657_dvr1",
+      "status": "Hadir"
+    }
+  ],
+  "assessments": [
+    {
+      "id": "ID_1788537568683_vkpw_ID_1788537538657_dvr1",
+      "meetingId": "ID_1788537568683_vkpw",
+      "studentId": "ID_1788537538657_dvr1",
+      "concept": 90,
+      "skill": 80,
+      "creativity": 70,
+      "attitude": 80,
+      "finalScore": 80.5,
+      "category": "Baik",
+      "desc": "Siswa memiliki performa baik dalam pertemuan ini. Menunjukkan Keterampilan coding yang sangat baik dan mandiri. "
+    }
+  ]
+}
