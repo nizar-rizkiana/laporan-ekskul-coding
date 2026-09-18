@@ -297,7 +297,7 @@ function renderIndividualReport() {
         ${assess.desc || 'Belum ada deskripsi catatan perkembangan dari guru.'}
       </div>
 
-      div style="display:flex; justify-content:flex-end; margin-top:3rem;">
+      <div style="display:flex; justify-content:flex-end; margin-top:3rem;">
         <div style="text-align:center;">
           <p>Guru Pembimbing</p>
           <div style="height:60px;"></div>
@@ -384,7 +384,7 @@ function renderSemesterReport() {
         </table>
       </div>
 
-      div style="display:flex; justify-content:flex-end; margin-top:3rem;">
+      <div style="display:flex; justify-content:flex-end; margin-top:3rem;">
         <div style="text-align:center;">
           <p>Guru Pembimbing</p>
           <div style="height:60px;"></div>
