@@ -29,8 +29,8 @@ async function loadDataFromJSON() {
 
     const data = await response.json();
 
-    if (data.students && data.meetings) {
-      appData = data;
+    if (Array.isArray(data.students) && Array.isArray(data.meetings)) {
+      appData = normalizeAppData(data);
       badge.innerText = '● Terhubung';
       badge.className = 'badge-status badge-hadir';
     } else {
@@ -43,6 +43,22 @@ async function loadDataFromJSON() {
   }
 }
 
+function normalizeAppData(data) {
+  return {
+    ekskul: Array.isArray(data.ekskul) ? data.ekskul : [],
+    students: data.students,
+    meetings: data.meetings,
+    attendance: Array.isArray(data.attendance) ? data.attendance : [],
+    assessments: Array.isArray(data.assessments) ? data.assessments : []
+  };
+}
+
+function getCurrentStudentMeetings() {
+  return appData.meetings.filter(meeting =>
+    !currentStudent.ekskulId || !meeting.ekskulId || meeting.ekskulId === currentStudent.ekskulId
+  );
+}
+
 function searchStudent() {
   const query = document.getElementById('student-search-input').value.toLowerCase().trim();
   const resultsContainer = document.getElementById('search-results');
@@ -52,8 +68,8 @@ function searchStudent() {
     return;
   }
 
-  const matches = appData.students.filter(s => 
-    s.name.toLowerCase().includes(query) || s.nis.toLowerCase().includes(query)
+  const matches = appData.students.filter(s =>
+    String(s.name).toLowerCase().includes(query) || String(s.nis).toLowerCase().includes(query)
   );
 
   if (matches.length === 0) {
@@ -118,7 +134,7 @@ function loadAttendanceData() {
   document.getElementById('att-count-sakit').innerText = count.Sakit;
   document.getElementById('att-count-alpa').innerText = count.Alpa;
 
-  const meetings = [...appData.meetings].sort((a,b) => a.number - b.number);
+  const meetings = [...getCurrentStudentMeetings()].sort((a,b) => a.number - b.number);
 
   const tbody = document.getElementById('attendance-table-body');
   tbody.innerHTML = meetings.map(m => {
@@ -139,7 +155,7 @@ function loadAttendanceData() {
 
 function populateMeetingDropdown() {
   const select = document.getElementById('select-meeting-report');
-  const meetings = [...appData.meetings].sort((a,b) => a.number - b.number);
+  const meetings = [...getCurrentStudentMeetings()].sort((a,b) => a.number - b.number);
   
   select.innerHTML = meetings.map(m => 
     `<option value="${m.id}">Pertemuan ${m.number}: ${m.topic}</option>`
@@ -282,7 +298,7 @@ function renderIndividualReport() {
 // 3. LAPORAN SEMESTER
 function renderSemesterReport() {
   const container = document.getElementById('semester-report-container');
-  const meetings = [...appData.meetings].sort((a,b) => a.number - b.number);
+  const meetings = [...getCurrentStudentMeetings()].sort((a,b) => a.number - b.number);
   const studentAssess = appData.assessments.filter(a => a.studentId === currentStudent.id);
   const studentAtt = appData.attendance.filter(a => a.studentId === currentStudent.id);
 
