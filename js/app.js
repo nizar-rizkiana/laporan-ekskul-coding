@@ -268,8 +268,8 @@ function renderIndividualReport() {
         <!-- Box Foto Hasil Projek -->
         <div style="flex:1; text-align:center; border:1px solid #e5e7eb; padding:0.8rem; border-radius:6px; background:#fafafa;">
           <p style="font-size:0.85rem; font-weight:bold; margin:0 0 0.5rem 0; color:#374151;">Foto Hasil Projek Siswa</p>
-          ${assess.projectImage ? 
-            `<img src="${assess.projectImage}" style="max-width:100%; height:160px; object-fit:cover; border-radius:4px; border:1px solid #ccc;">` : 
+          ${assessments.projectImage ? 
+            `<img src="${assessments.projectImage}" style="max-width:100%; height:160px; object-fit:cover; border-radius:4px; border:1px solid #ccc;">` : 
             '<div style="height:160px; border:1px dashed #ccc; display:flex; align-items:center; justify-content:center; color:#9ca3af; font-size:0.8rem; background:#fff;">Tidak Ada Foto Hasil Projek</div>'
           }
         </div>
